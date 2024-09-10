@@ -25,26 +25,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import HeroSection from "../sections/hero-section";
-
-interface NavItemProps {
-  href: string;
-  children: React.ReactNode;
-}
+import { url } from "inspector";
 
 interface FadeInWhenVisibleProps {
   children: React.ReactNode;
 }
-
-const NavItem: React.FC<NavItemProps> = ({ href, children }) => (
-  <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-    <Link
-      href={href}
-      className="text-gray-300 hover:text-white transition-colors"
-    >
-      {children}
-    </Link>
-  </motion.li>
-);
 
 const FadeInWhenVisible: React.FC<FadeInWhenVisibleProps> = ({ children }) => {
   return (
@@ -65,7 +50,7 @@ const FadeInWhenVisible: React.FC<FadeInWhenVisibleProps> = ({ children }) => {
 
 export default function LandingPage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -98,51 +83,6 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <motion.nav
-        className="bg-gray-900 text-white py-4 px-6 fixed w-full z-50"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      >
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
-            LIYO LLC
-          </Link>
-          <div className="hidden md:block">
-            <ul className="flex space-x-6">
-              <NavItem href="#home">Home</NavItem>
-              <NavItem href="#featured">Featured</NavItem>
-              <NavItem href="#vehicles">Vehicles</NavItem>
-              <NavItem href="#testimonials">Testimonials</NavItem>
-              <NavItem href="#contact">Contact</NavItem>
-            </ul>
-          </div>
-          <Button
-            className="md:hidden"
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <Menu className="h-6 w-6" />
-          </Button>
-        </div>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden mt-4"
-          >
-            <ul className="flex flex-col space-y-2">
-              <NavItem href="#home">Home</NavItem>
-              <NavItem href="#featured">Featured</NavItem>
-              <NavItem href="#vehicles">Vehicles</NavItem>
-              <NavItem href="#testimonials">Testimonials</NavItem>
-              <NavItem href="#contact">Contact</NavItem>
-            </ul>
-          </motion.div>
-        )}
-      </motion.nav>
 
       {/* Hero Section */}
       <HeroSection />
@@ -273,6 +213,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Nissan",
               year: "1999",
+              url: "/vehicles/nissan-skyline-gtr",
             },
             {
               image:
@@ -284,6 +225,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Toyota",
               year: "1998",
+              url: "/vehicles/toyota-supra",
             },
             {
               image:
@@ -295,6 +237,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Mazda",
               year: "1992",
+              url: "/vehicles/mazda-rx7",
             },
             {
               image:
@@ -306,6 +249,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Honda",
               year: "1995",
+              url: "/vehicles/honda-nsx",
             },
             {
               image:
@@ -317,6 +261,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Subaru",
               year: "2004",
+              url: "/vehicles/subaru-impreza-wrx-sti",
             },
             {
               image:
@@ -328,6 +273,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Mitsubishi",
               year: "2006",
+              url: "/vehicles/mitsubishi-lancer-evolution",
             },
           ].map((car, index) => (
             <FadeInWhenVisible key={index}>
@@ -364,9 +310,11 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <div className="flex justify-between">
-                    <Button variant="outline" size="sm">
-                      View Details
-                    </Button>
+                    <Link href={car.url}>
+                      <Button variant="outline" size="sm">
+                        View Details
+                      </Button>
+                    </Link>
                     <Button
                       size="sm"
                       className="bg-red-600 hover:bg-red-700 text-white"
