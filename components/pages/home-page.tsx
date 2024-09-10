@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import HeroSection from "../sections/hero-section";
 import { url } from "inspector";
+import VehicleCard from "../vehicle-card";
 
 interface FadeInWhenVisibleProps {
   children: React.ReactNode;
@@ -228,8 +229,7 @@ export default function LandingPage() {
               url: "/vehicles/toyota-supra",
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1595953453746-1f88d8c1a871?w=600&h=400&fit=crop",
+              image: "/img/rx7.webp",
               name: "Mazda RX-7",
               price: "$38,000",
               transmission: "Manual",
@@ -252,8 +252,7 @@ export default function LandingPage() {
               url: "/vehicles/honda-nsx",
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1603385937173-49f8cf7dda8c?w=600&h=400&fit=crop",
+              image: "/img/ferrari.webp",
               name: "Subaru Impreza WRX STI",
               price: "$42,000",
               transmission: "Manual",
@@ -264,8 +263,7 @@ export default function LandingPage() {
               url: "/vehicles/subaru-impreza-wrx-sti",
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1570733117311-d990c3816c47?w=600&h=400&fit=crop",
+              image: "/img/lancer.webp",
               name: "Mitsubishi Lancer Evolution",
               price: "$48,000",
               transmission: "Manual",
@@ -277,53 +275,7 @@ export default function LandingPage() {
             },
           ].map((car, index) => (
             <FadeInWhenVisible key={index}>
-              <motion.div
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
-                whileHover={{ y: -10 }}
-              >
-                <Image
-                  src={car.image}
-                  alt={car.name}
-                  width={600}
-                  height={400}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{car.name}</h3>
-                  <p className="text-red-600 font-bold mb-4">{car.price}</p>
-                  <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
-                    <div className="flex items-center">
-                      <Settings className="w-4 h-4 mr-2 text-gray-400" />
-                      <span>{car.transmission}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Gauge className="w-4 h-4 mr-2 text-gray-400" />
-                      <span>{car.mileage}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Fuel className="w-4 h-4 mr-2 text-gray-400" />
-                      <span>{car.fuel}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-2 text-gray-400" />
-                      <span>{car.year}</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <Link href={car.url}>
-                      <Button variant="outline" size="sm">
-                        View Details
-                      </Button>
-                    </Link>
-                    <Button
-                      size="sm"
-                      className="bg-red-600 hover:bg-red-700 text-white"
-                    >
-                      Inquire
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
+              <VehicleCard key={index} car={car} />
             </FadeInWhenVisible>
           ))}
         </div>
