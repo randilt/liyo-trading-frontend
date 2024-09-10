@@ -24,6 +24,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import HeroSection from "../sections/hero-section";
 
 interface NavItemProps {
   href: string;
@@ -144,70 +145,7 @@ export default function LandingPage() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section
-        id="home"
-        ref={heroRef}
-        className="pt-20 min-h-screen flex items-center bg-gray-900 text-white overflow-hidden"
-      >
-        <motion.div
-          style={{ opacity, scale }}
-          className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center"
-        >
-          <div className="md:w-1/2 mb-8 md:mb-0">
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Unleash the Power of JDM
-            </motion.h1>
-            <motion.p
-              className="text-xl md:text-2xl mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              Experience the thrill of owning a legendary Japanese sports car
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <Button
-                size="lg"
-                className="bg-red-600 hover:bg-red-700 text-white"
-              >
-                Explore Our Stock
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-gray-900"
-              >
-                Contact Us
-              </Button>
-            </motion.div>
-          </div>
-          <motion.div
-            className="md:w-1/2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1611016186353-9af58c69a533?w=800&h=600&fit=crop"
-              alt="JDM Sports Car"
-              width={800}
-              height={600}
-              className="rounded-lg shadow-2xl"
-            />
-          </motion.div>
-        </motion.div>
-      </section>
-
+      <HeroSection />
       {/* Featured JDM Car of the Month Section */}
       <section
         id="featured"
