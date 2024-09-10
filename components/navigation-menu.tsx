@@ -39,11 +39,11 @@ function NavMenu() {
           </Link>
           <div className="hidden md:block">
             <ul className="flex space-x-6">
-              <NavItem href="#home">Home</NavItem>
-              <NavItem href="#featured">Featured</NavItem>
-              <NavItem href="#vehicles">Vehicles</NavItem>
+              <NavItem href="/">Home</NavItem>
+              <NavItem href="/featured">Featured</NavItem>
+              <NavItem href="/vehicles">Vehicles</NavItem>
               <NavItem href="#testimonials">Testimonials</NavItem>
-              <NavItem href="#contact">Contact</NavItem>
+              <NavItem href="/contact">Contact</NavItem>
             </ul>
           </div>
           <Button
