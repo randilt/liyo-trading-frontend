@@ -1,79 +1,162 @@
 "use client";
-import { motion } from "framer-motion";
-import { Menu } from "lucide-react";
 
+import React, { useState, useEffect, createContext, useContext } from "react";
 import Link from "next/link";
-import React, { useState } from "react";
-import { Button } from "./ui/button";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface NavItemProps {
   href: string;
   children: React.ReactNode;
+  isDarkBg: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ href, children }) => (
-  <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+const ThemeContext = createContext({
+  isDarkBg: true,
+  setIsDarkBg: (value: boolean) => {},
+});
+
+const NavItem: React.FC<NavItemProps> = ({ href, children, isDarkBg }) => (
+  <motion.li
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="relative"
+  >
     <Link
       href={href}
-      className="text-gray-300 hover:text-white transition-colors"
+      className={`flex items-center transition-colors group ${
+        isDarkBg
+          ? "text-white hover:text-red-400"
+          : "text-gray-800 hover:text-red-600"
+      }`}
     >
-      {children}
+      <span>{children}</span>
+      <motion.div
+        className={`absolute bottom-0 left-0 w-full h-0.5 ${
+          isDarkBg ? "bg-red-400" : "bg-red-600"
+        } origin-left`}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.3 }}
+      />
     </Link>
   </motion.li>
 );
 
-function NavMenu() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [isDarkBg, setIsDarkBg] = useState(true);
   return (
-    <div>
-      {" "}
-      <motion.nav
-        className="bg-gray-900 text-white py-4 px-6 fixed w-full z-50"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      >
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
-            LIYO LLC
-          </Link>
-          <div className="hidden md:block">
-            <ul className="flex space-x-6">
-              <NavItem href="/">Home</NavItem>
-              <NavItem href="/featured">Featured</NavItem>
-              <NavItem href="/vehicles">Vehicles</NavItem>
-              <NavItem href="#testimonials">Testimonials</NavItem>
-              <NavItem href="/contact">Contact</NavItem>
-            </ul>
-          </div>
-          <Button
-            className="md:hidden"
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+    <ThemeContext.Provider value={{ isDarkBg, setIsDarkBg }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+const NavMenu: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { isDarkBg, setIsDarkBg } = useContext(ThemeContext);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsDarkBg(pathname === "/");
+  }, [pathname, setIsDarkBg]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/vehicles", label: "Vehicles" },
+    { href: "/machinery", label: "Machinery" },
+    { href: "/contact", label: "Contact" },
+  ];
+
+  return (
+    <motion.nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/80 backdrop-blur-xl shadow-lg py-2"
+          : isDarkBg
+          ? "bg-transparent py-4"
+          : "bg-white py-4"
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-bold tracking-tighter">
+          <span className="text-red-600">LIYO</span>{" "}
+          <span
+            className={scrolled || !isDarkBg ? "text-gray-800" : "text-white"}
           >
-            <Menu className="h-6 w-6" />
-          </Button>
+            Trading
+          </span>
+        </Link>
+        <div className="hidden md:block">
+          <ul className="flex space-x-8">
+            {navItems.map((item) => (
+              <NavItem
+                key={item.href}
+                href={item.href}
+                isDarkBg={isDarkBg && !scrolled}
+              >
+                {item.label}
+              </NavItem>
+            ))}
+          </ul>
         </div>
+        <Button
+          className="md:hidden"
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? (
+            <X className="h-6 w-6 text-red-600" />
+          ) : (
+            <Menu
+              className={`h-6 w-6 ${
+                scrolled || !isDarkBg ? "text-gray-800" : "text-white"
+              }`}
+            />
+          )}
+        </Button>
+      </div>
+      <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden mt-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden mt-4 overflow-hidden bg-white"
           >
-            <ul className="flex flex-col space-y-2">
-              <NavItem href="#home">Home</NavItem>
-              <NavItem href="#featured">Featured</NavItem>
-              <NavItem href="#vehicles">Vehicles</NavItem>
-              <NavItem href="#testimonials">Testimonials</NavItem>
-              <NavItem href="#contact">Contact</NavItem>
+            <ul className="flex flex-col space-y-4 px-6 py-4">
+              {navItems.map((item) => (
+                <NavItem key={item.href} href={item.href} isDarkBg={false}>
+                  {item.label}
+                </NavItem>
+              ))}
             </ul>
           </motion.div>
         )}
-      </motion.nav>
-    </div>
+      </AnimatePresence>
+    </motion.nav>
   );
-}
+};
 
 export default NavMenu;

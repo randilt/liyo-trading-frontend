@@ -71,8 +71,7 @@ const vehicles: Vehicle[] = [
     url: "/vehicles/honda-nsx",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1603385937173-49f8cf7dda8c?w=800&h=600&fit=crop",
+    image: "/img/rx7.webp",
     name: "Subaru Impreza WRX STI",
     price: "$38,000",
     transmission: "Manual",
@@ -82,8 +81,7 @@ const vehicles: Vehicle[] = [
     url: "/vehicles/subaru-impreza-wrx-sti",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1570733117311-d990c3816c47?w=800&h=600&fit=crop",
+    image: "/img/lancer.webp",
     name: "Mitsubishi Lancer Evolution IX",
     price: "$42,000",
     transmission: "Manual",
@@ -137,8 +135,7 @@ const vehicles: Vehicle[] = [
     url: "/vehicles/honda-integra-type-r",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1603385937173-49f8cf7dda8c?w=800&h=600&fit=crop",
+    image: "/img/rx7.webp",
     name: "Subaru BRZ",
     price: "$25,000",
     transmission: "Manual",
@@ -148,8 +145,7 @@ const vehicles: Vehicle[] = [
     url: "/vehicles/subaru-brz",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1570733117311-d990c3816c47?w=800&h=600&fit=crop",
+    image: "/img/lancer.webp",
     name: "Mitsubishi 3000GT",
     price: "$32,000",
     transmission: "Manual",

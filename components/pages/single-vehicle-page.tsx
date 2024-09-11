@@ -34,13 +34,9 @@ import {
 } from "@/components/ui/select";
 
 const vehicleImages = [
-  "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200&h=800&fit=crop",
-  "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&h=800&fit=crop",
-  "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&h=800&fit=crop",
-  "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&h=800&fit=crop",
-  "https://images.unsplash.com/photo-1542282088-fe8426682b8f?w=1200&h=800&fit=crop",
-  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200&h=800&fit=crop",
-  "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&h=800&fit=crop",
+  "/img/sample-car-1.webp",
+  "/img/sample-car-2.webp",
+  "/img/sample-car-3.webp",
 ];
 
 const vehicleFeatures = [
@@ -103,7 +99,7 @@ const ShowcaseVehicle: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.2 }}
                 className="relative aspect-[4/3] rounded-lg overflow-hidden"
               >
                 <Image
