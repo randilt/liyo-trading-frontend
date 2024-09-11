@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-russo antialiased`}>
+      <body className={`font-russo antialiased `}>
         <ThemeProvider>
           <NavMenu />
           {children}

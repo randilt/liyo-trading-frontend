@@ -129,7 +129,10 @@ const NavMenu: React.FC = () => {
                 key={item.href}
                 href={item.href}
                 isDarkBg={isDarkBg && !scrolled}
-                isActive={pathname === item.href}
+                isActive={
+                  (item.href.length > 1 && pathname.includes(item.href)) ||
+                  pathname === item.href
+                }
                 onClick={handleNavItemClick}
               >
                 {item.label}
