@@ -10,22 +10,19 @@ import { Card, CardContent } from "@/components/ui/card";
 const testimonials = [
   {
     name: "John Doe",
-    image:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop",
+    image: "/img/john.webp",
     quote: "Amazing service! I got my dream JDM car with ease.",
     rating: 5,
   },
   {
     name: "Jane Smith",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+    image: "/img/jane.webp",
     quote: "The import process was smooth and hassle-free.",
     rating: 5,
   },
   {
     name: "Mike Johnson",
-    image:
-      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop",
+    image: "/img/mike.webp",
     quote: "Excellent selection of rare JDM models!",
     rating: 5,
   },
