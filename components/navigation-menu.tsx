@@ -11,6 +11,8 @@ interface NavItemProps {
   href: string;
   children: React.ReactNode;
   isDarkBg: boolean;
+  isActive: boolean;
+  onClick: () => void;
 }
 
 const ThemeContext = createContext({
@@ -18,7 +20,13 @@ const ThemeContext = createContext({
   setIsDarkBg: (value: boolean) => {},
 });
 
-const NavItem: React.FC<NavItemProps> = ({ href, children, isDarkBg }) => (
+const NavItem: React.FC<NavItemProps> = ({
+  href,
+  children,
+  isDarkBg,
+  isActive,
+  onClick,
+}) => (
   <motion.li
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
@@ -30,7 +38,8 @@ const NavItem: React.FC<NavItemProps> = ({ href, children, isDarkBg }) => (
         isDarkBg
           ? "text-white hover:text-red-400"
           : "text-gray-800 hover:text-red-600"
-      }`}
+      } ${isActive ? "font-bold" : ""}`}
+      onClick={onClick}
     >
       <span>{children}</span>
       <motion.div
@@ -38,8 +47,7 @@ const NavItem: React.FC<NavItemProps> = ({ href, children, isDarkBg }) => (
           isDarkBg ? "bg-red-400" : "bg-red-600"
         } origin-left`}
         initial={{ scaleX: 0 }}
-        animate={{ scaleX: 0 }}
-        whileHover={{ scaleX: 1 }}
+        animate={{ scaleX: isActive ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       />
     </Link>
@@ -65,6 +73,7 @@ const NavMenu: React.FC = () => {
 
   useEffect(() => {
     setIsDarkBg(pathname === "/");
+    setIsMenuOpen(false); // Close menu on route change
   }, [pathname, setIsDarkBg]);
 
   useEffect(() => {
@@ -84,6 +93,10 @@ const NavMenu: React.FC = () => {
     { href: "/contact", label: "Contact" },
   ];
 
+  const handleNavItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <motion.nav
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -98,7 +111,11 @@ const NavMenu: React.FC = () => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold tracking-tighter">
+        <Link
+          href="/"
+          className="text-2xl font-bold tracking-tighter"
+          onClick={handleNavItemClick}
+        >
           <span className="text-red-600">LIYO</span>{" "}
           <span
             className={scrolled || !isDarkBg ? "text-gray-800" : "text-white"}
@@ -113,6 +130,8 @@ const NavMenu: React.FC = () => {
                 key={item.href}
                 href={item.href}
                 isDarkBg={isDarkBg && !scrolled}
+                isActive={pathname === item.href}
+                onClick={handleNavItemClick}
               >
                 {item.label}
               </NavItem>
@@ -147,7 +166,13 @@ const NavMenu: React.FC = () => {
           >
             <ul className="flex flex-col space-y-4 px-6 py-4">
               {navItems.map((item) => (
-                <NavItem key={item.href} href={item.href} isDarkBg={false}>
+                <NavItem
+                  key={item.href}
+                  href={item.href}
+                  isDarkBg={false}
+                  isActive={pathname === item.href}
+                  onClick={handleNavItemClick}
+                >
                   {item.label}
                 </NavItem>
               ))}
