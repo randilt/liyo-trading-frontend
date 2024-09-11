@@ -106,7 +106,7 @@ export default function ContactPage() {
 
             <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80"
+                src="/img/rx7.webp"
                 alt="Luxury Japanese car"
                 layout="fill"
                 objectFit="cover"

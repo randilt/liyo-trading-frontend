@@ -7,7 +7,7 @@ export default function AboutPage() {
     <div className="bg-white min-h-screen">
       <section className="relative h-[60vh] flex items-center justify-center">
         <Image
-          src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+          src="/img/about-header.webp"
           alt="Japanese cityscape with cars"
           layout="fill"
           objectFit="cover"
@@ -49,7 +49,7 @@ export default function AboutPage() {
           </div>
           <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80"
+              src="/img/sample-car-1.webp"
               alt="Luxury Japanese car"
               layout="fill"
               objectFit="cover"
@@ -68,38 +68,31 @@ export default function AboutPage() {
             {[
               {
                 title: "Vehicles",
-                image:
-                  "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+                image: "/img/sample-car-1.webp",
               },
               {
                 title: "Parts",
-                image:
-                  "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+                image: "/img/parts.webp",
               },
               {
                 title: "Motorcycles",
-                image:
-                  "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+                image: "/img/motorcycles.webp",
               },
               {
                 title: "Trucks",
-                image:
-                  "https://images.unsplash.com/photo-1566647387313-9fda80664848?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+                image: "/img/trucks.webp",
               },
               {
                 title: "Construction Machinery",
-                image:
-                  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+                image: "/img/construction-machinery.webp",
               },
               {
                 title: "Agricultural Machinery",
-                image:
-                  "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+                image: "/img/agricultural-machinery.png",
               },
               {
                 title: "Sports Cars",
-                image:
-                  "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+                image: "/img/sports-cars.webp",
               },
             ].map((service, index) => (
               <div

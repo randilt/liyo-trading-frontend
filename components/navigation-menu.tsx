@@ -88,8 +88,7 @@ const NavMenu: React.FC = () => {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/vehicles", label: "Vehicles" },
-    { href: "/machinery", label: "Machinery" },
+    { href: "/our-stock", label: "Our Stock" },
     { href: "/contact", label: "Contact" },
   ];
 

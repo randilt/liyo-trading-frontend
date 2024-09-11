@@ -67,8 +67,7 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
-              image:
-                "https://images.unsplash.com/photo-1611016186353-9af58c69a533?w=600&h=400&fit=crop",
+              image: "/img/sample-car-1.webp",
               name: "Nissan Skyline GT-R",
               price: "$45,000",
               transmission: "Manual",
@@ -76,11 +75,10 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Nissan",
               year: "1999",
-              url: "/vehicles/nissan-skyline-gtr",
+              url: "/our-stock/nissan-skyline-gtr",
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&h=400&fit=crop",
+              image: "/img/sample-car-2.webp",
               name: "Toyota Supra",
               price: "$55,000",
               transmission: "Manual",
@@ -88,7 +86,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Toyota",
               year: "1998",
-              url: "/vehicles/toyota-supra",
+              url: "/our-stock/toyota-supra",
             },
             {
               image: "/img/rx7.webp",
@@ -99,11 +97,10 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Mazda",
               year: "1992",
-              url: "/vehicles/mazda-rx7",
+              url: "/our-stock/mazda-rx7",
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?w=600&h=400&fit=crop",
+              image: "/img/sample-car-3.webp",
               name: "Honda NSX",
               price: "$65,000",
               transmission: "Manual",
@@ -111,7 +108,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Honda",
               year: "1995",
-              url: "/vehicles/honda-nsx",
+              url: "/our-stock/honda-nsx",
             },
             {
               image: "/img/ferrari.webp",
@@ -122,7 +119,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Subaru",
               year: "2004",
-              url: "/vehicles/subaru-impreza-wrx-sti",
+              url: "/our-stock/subaru-impreza-wrx-sti",
             },
             {
               image: "/img/lancer.webp",
@@ -133,7 +130,7 @@ export default function LandingPage() {
               fuel: "Petrol",
               manufacturer: "Mitsubishi",
               year: "2006",
-              url: "/vehicles/mitsubishi-lancer-evolution",
+              url: "/our-stock/mitsubishi-lancer-evolution",
             },
           ].map((car, index) => (
             <FadeInWhenVisible key={index}>
