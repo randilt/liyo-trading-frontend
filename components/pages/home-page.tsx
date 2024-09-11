@@ -29,7 +29,7 @@ import { url } from "inspector";
 import VehicleCard from "../vehicle-card";
 import EngagementSection from "../sections/engagement-section";
 import FadeInWhenVisible from "../fade-in-when-visible";
-import FeaturedVehicleMonth from "../sections/featured-vehicle-of-month";
+import WhatWeOffer from "../sections/what-we-can-offer";
 import TestimonialsSection from "../sections/testimonials-section";
 import WhyChooseUs from "../sections/why-choose-us";
 
@@ -49,8 +49,7 @@ export default function LandingPage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Featured JDM Car of the Month Section */}
-      <FeaturedVehicleMonth />
+      <WhatWeOffer />
       <EngagementSection />
       {/* Why Choose Us */}
       <WhyChooseUs />
