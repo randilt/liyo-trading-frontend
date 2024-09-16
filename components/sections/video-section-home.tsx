@@ -55,7 +55,7 @@ export default function EnhancedHeroSection() {
       >
         <source src="/videos/liyo-trading-services.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900/80   to-transparent opacity-90" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-gray-900/60   to-transparent opacity-90" />
 
       <div className="relative z-10 h-full flex flex-col justify-center items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h1

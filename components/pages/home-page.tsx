@@ -53,7 +53,9 @@ export default function LandingPage() {
 
       <WhatWeOffer />
       <EnhancedHeroSection />
+      <WhyChooseUs />
       <EngagementSection />
+
       {/* Why Choose Us */}
 
       {/* Vehicle Listings Section */}
@@ -141,7 +143,7 @@ export default function LandingPage() {
           ))}
         </div>
       </section>
-      <WhyChooseUs />
+
       {/* Customer Testimonials Section */}
       <TestimonialsSection />
 
