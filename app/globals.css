@@ -87,3 +87,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+#nprogress .bar {
+  background: #e53935 !important;
+  z-index: 999999;
+}

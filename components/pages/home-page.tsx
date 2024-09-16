@@ -32,6 +32,8 @@ import FadeInWhenVisible from "../fade-in-when-visible";
 import WhatWeOffer from "../sections/what-we-can-offer";
 import TestimonialsSection from "../sections/testimonials-section";
 import WhyChooseUs from "../sections/why-choose-us";
+import EnhancedAboutPage from "./about-page";
+import EnhancedHeroSection from "../sections/video-section-home";
 
 export default function LandingPage() {
   const heroRef = useRef(null);
@@ -50,9 +52,10 @@ export default function LandingPage() {
       <HeroSection />
 
       <WhatWeOffer />
+      <EnhancedHeroSection />
       <EngagementSection />
       {/* Why Choose Us */}
-      <WhyChooseUs />
+
       {/* Vehicle Listings Section */}
       <section
         id="vehicles"
@@ -138,7 +141,7 @@ export default function LandingPage() {
           ))}
         </div>
       </section>
-
+      <WhyChooseUs />
       {/* Customer Testimonials Section */}
       <TestimonialsSection />
 
