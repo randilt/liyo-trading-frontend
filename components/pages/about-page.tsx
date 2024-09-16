@@ -83,7 +83,7 @@ export default function EnhancedAboutPage() {
     offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
 
   return (
@@ -153,8 +153,8 @@ export default function EnhancedAboutPage() {
           </div>
           <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://images.unsplash.com/photo-1611016186353-9af58c69a533?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-              alt="Luxury Japanese car"
+              src="/img/about-liyo-trading.webp"
+              alt="LIYO Trading"
               layout="fill"
               objectFit="cover"
               className="transition-transform duration-300 transform hover:scale-105"
