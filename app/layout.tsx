@@ -4,6 +4,7 @@ import "./globals.css";
 import NavMenu, { ThemeProvider } from "@/components/navigation-menu";
 import "@fontsource/russo-one";
 import Footer from "@/components/sections/footer-section";
+import ProgressBarWrapper from "@/components/progress-bar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-russo antialiased `}>
         <ThemeProvider>
-          <NavMenu />
-          {children}
-          <Footer />
+          <ProgressBarWrapper>
+            <NavMenu />
+            {children}
+            <Footer />
+          </ProgressBarWrapper>
         </ThemeProvider>
       </body>
     </html>
